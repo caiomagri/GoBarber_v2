@@ -38,15 +38,13 @@ const Toast: React.FC<ToastProps> = ({ message, style }) => {
     <Container
       key={message.id}
       type={message.type}
-      hasDescription={!!message.description}
+      hasDescription={Number(!!message.description)}
       style={style}
     >
       {icons[message.type || 'info']}
       <div>
         <strong>{message.title}</strong>
-        {message.description && (
-          <p>Não foi possivel fazer login na aplicação</p>
-        )}
+        {message.description && <p>{message.description}</p>}
       </div>
       <button type="button" onClick={() => removeToast(message.id)}>
         <FiXCircle size={18} />
